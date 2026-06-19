@@ -1,265 +1,53 @@
 :root {
-  --bg: #f5f7fa;
-  --card: #ffffff;
-  --card-secondary: #ffffff;
-  --text: #212529;
-  --text-muted: #6c757d;
-  --border: #dee2e6;
-  --table-head: #f8f9fa;
-  --hover: #f1f5f9;
-  --censipam-verde: #198754;
-  --azul-vivo: rgb(13, 110, 253);
-}
-
-/* Tema Claro */
-.theme-light {
-  --bg: #f5f7fa;
-  --card: #ffffff;
-  --card-secondary: #ffffff;
-  --text: #212529;
-  --text-muted: #6c757d;
-  --border: #dee2e6;
-  --table-head: #f8f9fa;
-  --hover: #f1f5f9;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  transition: .3s;
-}
-
-.card {
-  background: var(--card);
-  color: var(--text);
-}
-
-.card-header {
-  background: var(--card) !important;
-  color: var(--text);
-  border-color: var(--border) !important;
-}
-
-/* .table {
-  color: var(--text);
-}
-
-.table thead th {
-  background: var(--table-head);
-  color: var(--text-muted);
-  border-color: var(--border);
-} */
-
-/* .table td {
-  border-color: var(--border);
-}
-
-.table tbody tr:hover {
-  background: rgb(13, 110, 253);
-} */
-
-.text-muted {
-  color: var(--text-muted) !important;
-}
-
-/* Cards de estatística */
-.stats-card {
-  background: var(--card-secondary);
+  --verde: #198754;
+  --azul: #015C91;
+  --amarelo: #e6a817;
+  --laranja: #d85a30;
+  --vermelho: #ff0100;
 }
 
 .fs-7 {
   font-size: 0.75rem;
 }
 
-/* Classes de Texto (Ex: text-censipam-verde) */
-.text-censipam-verde {
-  color: var(--censipam-verde) !important;
+.bg-light-body {
+  background-color: #f5f7fa;
 }
 
-.text-censipam-azul {
-  color: var(--censipam-azul) !important;
+.stats-card {
+  background-color: white;
 }
 
-/* Classes de Fundo (Ex: bg-censipam-azul) */
-.bg-censipam-verde {
-  background-color: var(--censipam-verde) !important;
+/* ======  BORDERS  ====== */
+
+/* top */
+.border-top-color-verde {
+  border-top: 6px solid var(--verde);
 }
 
-.bg-censipam-azul {
-  background-color: var(--censipam-azul) !important;
-}
-
-/* Classes de Bordas (Ex: border-censipam-verde) */
-.border-censipam-verde {
-  border-color: var(--censipam-verde) !important;
-}
-
-.border-censipam-azul {
-  border-color: var(--censipam-azul) !important;
-}
-
-/* =--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=- */
-/* Niveis das cotas */
-.campo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.campo .msg-erro {
-  font-size: 11px;
-  color: #E24B4A;
-  display: none;
-}
-
-.campo.invalido .msg-erro {
-  display: block;
-}
-
-.campo.invalido .form-control {
-  border-color: #E24B4A;
-  background: #fff5f5;
-}
-
-.regua-topo {
-  font-size: 11px;
-  color: #888;
-  margin-bottom: 4px;
-}
-
-.regua {
-  position: relative;
-  width: 32px;
-  height: 260px;
-  background: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 16px;
-}
-
-.marcador {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2.5px solid white;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-  transition: bottom 0.25s, background 0.25s;
-}
-
-.marcador.erro-visual {
-  box-shadow: 0 0 0 3px rgba(226, 75, 74, 0.25);
-}
-
-.pill {
-  position: absolute;
-  left: calc(100% + 10px);
-  transform: translateY(50%);
-  font-size: 11px;
-  font-weight: 500;
-  white-space: nowrap;
-  color: #555;
-  transition: bottom 0.25s;
-  pointer-events: none;
-}
-
-/* ==================== ESTILO DA TABELA Listagem Dados inundacao ==================== */
-.tabela-estacoes table {
-  min-width: 1200px;
-}
-
-.table-responsive.tabela-estacoes {
-  overflow: clip;
-  /* Permite o sticky funcionar verticalmente */
-}
-
-.tabela-estacoes thead th {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-
-  background: #f8f9fa;
-  color: #6c757d;
-
-  font-size: .75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-
-  border-bottom: 2px solid #dee2e6;
-  padding: 1rem;
-}
-
-.tabela-estacoes thead tr.detalhes th {
-  background-color: transparent;
-}
-
-.tabela-estacoes tbody td {
-  padding: .9rem 1rem;
-  border-color: #f1f3f5;
-}
-
-.tabela-estacoes tbody tr {
-  transition: all .2s ease;
-}
-
-/* .tabela-estacoes tbody tr:hover {
-  box-shadow: 0 0 0 1px rgb(13, 110, 253);
-  transform: scale(1.002);
-  cursor: pointer;
-} */
-
-.card {
-  border-radius: 16px;
-}
-
-.badge {
-  font-weight: 600;
-}
-
-.bg-orange {
-  background-color: #fd7e14;
-}
-
-.bg-yellow {
-  background-color: #e6a817;
-  ;
+/* bottom */
+.border-bottom-color-verde {
+  border-bottom: 6px solid var(--verde);
 }
 
 
-/*  */
-.btn-nuhidro {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 6px;
-  background: #ffffff;
-  color: #1a5c9a;
-  border: 1.5px solid #1a5c9a;
-  border-radius: 2px;
-  font-size: 14px;
-  font-weight: 500;
-  height: fit-content;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+/* left's */
+.border-left-color-verde {
+  border-left: 6px solid var(--verde);
 }
 
-.btn-nuhidro:hover {
-  background: #e8f1fb;
-  box-shadow: 0 2px 8px rgba(26, 92, 154, 0.15);
+.border-left-color-azul {
+  border-left: 6px solid var(--azul);
 }
 
-.btn-nuhidro:active {
-  background: #cfe0f4;
-  transform: scale(0.98);
+.border-left-color-amarelo {
+  border-left: 6px solid var(--amarelo);
 }
 
-.collapse {
-  transition: none !important;
+.border-left-color-laranja {
+  border-left: 6px solid var(--laranja);
 }
 
-.collapsing {
-  transition: none !important;
-  display: none;
+.border-left-color-vermelho {
+  border-left: 6px solid var(--vermelho);
 }
