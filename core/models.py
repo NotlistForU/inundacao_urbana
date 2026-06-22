@@ -39,6 +39,10 @@ class InundacaoUrbana(models.Model):
         managed = False ######
 
     @property
+    def data_voo_formatada(self):
+        return self.data_voo.strftime('%d/%m/%Y') if self.data_voo is not None else None
+
+    @property
     def cota_atencao_formatada(self):
         return f"{self.cota_atencao} m" if self.cota_atencao is not None else None
     

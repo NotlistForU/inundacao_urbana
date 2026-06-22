@@ -1,0 +1,82 @@
+<div class="row g-3">
+    <!-- Para Textos e Números -->
+    <div class="col-md-3">
+        <label class="form-label">cd_geocodi</label>
+        <input class="form-control" type="text" name="cd_geocodi" value="{{ item.cd_geocodi|default:'' }}"
+            placeholder="Geocódigo">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">municipio</label>
+        <input class="form-control" type="text" name="municipio" value="{{ item.municipio|default:'' }}"
+            placeholder="Município">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">cd_estacao</label>
+        <input class="form-control" type="number" name="cd_estacao" value="{{ item.cd_estacao|default:'' }}"
+            placeholder="Estação" step="1">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">longitude</label>
+        <input class="form-control" type="number" name="longitude" value="{{ item.longitude|default:'' }}"
+            placeholder="Longitude" step="0.000000001">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">latitude</label>
+        <input class="form-control" type="number" name="latitude" value="{{ item.latitude|default:'' }}"
+            placeholder="Latitude" step="0.00000001">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">cota_rn_ana</label>
+        <input class="form-control" type="number" name="cota_rn_ana" value="{{ item.cota_rn_ana|default:'' }}"
+            placeholder="RN ANA" step="1">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">cota_rn_orto</label>
+        <input class="form-control" type="number" name="cota_rn_orto" value="{{ item.cota_rn_orto|default:'' }}"
+            placeholder="RN Orto" step="1">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">cota_atencao</label>
+        <input class="form-control" type="number" name="cota_atencao" value="{{ item.cota_atencao|default:'' }}"
+            placeholder="Atenção" step="0.01">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">cota_alerta</label>
+        <input class="form-control" type="number" name="cota_alerta" value="{{ item.cota_alerta|default:'' }}"
+            placeholder="Alerta" step="0.01">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">cota_inundacao</label>
+        <input class="form-control" type="number" name="cota_inundacao" value="{{ item.cota_inundacao|default:'' }}"
+            placeholder="Inundação" step="0.01">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">cota_maxima</label>
+        <input class="form-control" type="number" name="cota_maxima" value="{{ item.cota_maxima|default:'' }}"
+            placeholder="Máxima" step="0.01">
+    </div>
+
+    <!-- Para Data (Se for None, exibe vazio) -->
+
+    <div class="col-md-3">
+        <label class="form-label">data_voo</label>
+        <input class="form-control" type="date" name="data_voo"
+            value="{% if item.data_voo %}{{ item.data_voo|date:'Y-m-d' }}{% endif %}" placeholder="Data voo">
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">cidade_id</label>
+        <input class="form-control" type="number" name="cidade_id" value="{{ item.cidade_id|default:'' }}"
+            placeholder="Cidade ID" step="1">
+    </div>
+</div>

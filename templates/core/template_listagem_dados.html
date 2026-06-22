@@ -15,39 +15,28 @@
 <body class="bg-light-body text-dark">
     <!-- Navbar -->
     {% include "componentes/_navbar.html" %}
-    <div class="container m-4">
-        <!-- stats cards -->
-        {% include "componentes/_stats_cards.html" %}
-    </div>
-    <div class="container-fluid px-4">
+
+    <div class="container-fluid px-4 pt-4">
         <div class="d-flex justify-content-between align-items-center">
             <h4>Listagem de dados</h4>
             <span class="badge rounded-pill bg-primary-subtle text-primary">
                 {{ dados|length }} registros
             </span>
         </div>
-        <div class=" border-top-color-verde border-bottom-color-verde rounded-4 overflow-hidden">
+    </div>
+
+    <div class="container-fluid p-4">
+        <!-- stats cards -->
+        {% include "componentes/_stats_cards.html" %}
+    </div>
+    <div class="container-fluid px-4">
+        <div class=" border-bottom-color-verde rounded-4 overflow-hidden">
             <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
 
                 <table class="table  table-hover align-middle table-sticky">
                     <thead class="sticky-top">
-                        <tr>
-                            <th>id</th>
-                            <th>cd_geocodi</th>
-                            <th>municipio</th>
-                            <th>cd_estacao</th>
-                            <th>longitude</th>
-                            <th>latitude</th>
-                            <th>cota_rn_ana</th>
-                            <th>cota_rn_orto</th>
-                            <th>cota_atencao</th>
-                            <th>cota_alerta</th>
-                            <th>cota_inundacao</th>
-                            <th>cota_maxima</th>
-                            <th>data_voo</th>
-                            <th>status</th>
-                            <th>integrado</th>
-                            <th>cidade_id</th>
+                        <tr class="border-bottom-color-verde rounded-4">
+                            {% include "componentes/_table_colunas.html" %}
                             <th class="text-center">
                                 <span>ações</span>
                             </th>
@@ -55,64 +44,56 @@
                     </thead>
                     <tbody>
                         {% for item in dados %}
-                        <tr>
-                            <td>
-                                <span>#{{ item.id }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cd_geocodi }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.municipio }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cd_estacao }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.longitude }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.latitude }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cota_rn_ana }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cota_rn_orto }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cota_atencao }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cota_alerta }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cota_inundacao }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cota_maxima }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.data_voo|date:"d/m/Y" }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.status }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.integrado }}</span>
-                            </td>
-                            <td>
-                                <span>{{ item.cidade_id }}</span>
-                            </td>
+
+                        <!-- LINHA DE DADOS -->
+                        <tr class="linha-dados" data-id="{{ item.id }}">
+                            {% include "componentes/_table_datas.html" %}
+
+                            <!-- botões de ações -->
                             <td class="text-center">
-                                <button class="btn btn-sm ">
+
+                                <!-- botão linha dados ir para edição -->
+                                <button
+                                    class="btn btn-sm border-bottom-color-amarelo border-size-2 botoes-ir-para-edicao"
+                                    data-id="{{ item.id }}">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-
-                                <button class="btn btn-sm">
+                                <!-- botão linha dados excluir -->
+                                <button class="btn btn-sm border-bottom-color-vermelho border-size-2"
+                                    data-bs-toggle="modal" data-bs-target="#modalExcluir" data-id="{{ item.id }}">
                                     <i class="bi bi-trash"></i>
                                 </button>
+
                             </td>
+                        </tr>
+
+                        <!-- LINHA EDiÇÃO -->
+                        <tr class="linha-edicao d-none" data-id="{{ item.id }}">
+
+                            <td colspan="17">
+                                <div>
+                                    <span class="tw-bold">
+                                        Linha em modo de edição | linha selecionada:
+                                        <strong>#{{ item.id }}</strong>
+                                    </span>
+
+                                </div>
+                                <div class="d-flex flex-wrap gap-2 align-items-center py-1">
+                                    {% include "componentes/_table_datas_inputs.html" %}
+                                </div>
+
+                                <div class=" d-flex justify-content-end gap-2 ">
+                                    <!-- botão salvar edição -->
+                                    <button class="btn btn-sm btn-success botoes-salvar-edicao" data-id="{{ item.id }}"
+                                        onclick="">Salvar</button>
+                                    <!-- botao cancelar edição -->
+                                    <button class="btn btn-sm btn-secondary botoes-cancelar-edicao"
+                                        data-id="{{ item.id }}" onclick="">Cancelar</button>
+
+                                </div>
+
+                            </td>
+
                         </tr>
                         {% endfor %}
 
@@ -120,12 +101,49 @@
 
                 </table>
 
+                <!-- Modais  -->
+                <div class="modal fade" id="modalEditar">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span>Editar dado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalExcluir" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Excluir dado</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span>Deseja excluir <strong id="idItem"></strong>?</span>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-danger">Sim, excluir</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
 
 
     </div>
+
+    {{ dados_json|json_script:"dados-json" }}
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/inundacao_urbana/listagem_dados.js' %}"></script>
 
 </body>
 

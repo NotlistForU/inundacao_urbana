@@ -1,232 +1,233 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-    // Dados
-    const dados = JSON.parse(document.getElementById("dados-json").textContent);
-    console.log(dados);
-
-    // Elementos
-    const inputFiltro = document.getElementById("input-filtro");
-    const sugestoes = document.getElementById("sugestoes");
-    const filtrosAtivos = document.getElementById("filtros-ativos");
-    const linhasPrincipais = document.querySelectorAll(".linha-principal");
-
+// ==== FILTRAR ====================================
+// document.addEventListener("DOMContentLoaded", () => {
+
+//     // Dados
+//     const dados = JSON.parse(document.getElementById("dados-json").textContent);
+//     console.log(dados);
+
+//     // Elementos
+//     const inputFiltro = document.getElementById("input-filtro");
+//     const sugestoes = document.getElementById("sugestoes");
+//     const filtrosAtivos = document.getElementById("filtros-ativos");
+//     const linhasPrincipais = document.querySelectorAll(".linha-principal");
+
+
+//     // Campos possíveis
+//     const campos = [
+//         { atributo: "id", nome: "ID" },
+//         { atributo: "municipio", nome: "Município" },
+//         { atributo: "estacao", nome: "Estação" },
+//         { atributo: "atencao", nome: "Atenção" },
+//         { atributo: "alerta", nome: "Alerta" },
+//         { atributo: "inundacao", nome: "Inundação" },
+//         { atributo: "maxima", nome: "Máxima" },
+//         { atributo: "data_voo", nome: "Data Voo" },
+//         { atributo: "status", nome: "Status" },
+//         { atributo: "longitude", nome: "Longitude" },
+//         { atributo: "latitude", nome: "Latitude" },
+//         { atributo: "cidade_id", nome: "Cidade ID" },
+//         { atributo: "cota_rn_ana", nome: "Cota RN ANA" },
+//         { atributo: "cota_rn_orto", nome: "Cota RN ORTO" },
+//         { atributo: "integrado", nome: "Integrado" },
+//         { atributo: "cd_estacao", nome: "CD Estação" }
+//     ];
 
-    // Campos possíveis
-    const campos = [
-        { atributo: "id", nome: "ID" },
-        { atributo: "municipio", nome: "Município" },
-        { atributo: "estacao", nome: "Estação" },
-        { atributo: "atencao", nome: "Atenção" },
-        { atributo: "alerta", nome: "Alerta" },
-        { atributo: "inundacao", nome: "Inundação" },
-        { atributo: "maxima", nome: "Máxima" },
-        { atributo: "data_voo", nome: "Data Voo" },
-        { atributo: "status", nome: "Status" },
-        { atributo: "longitude", nome: "Longitude" },
-        { atributo: "latitude", nome: "Latitude" },
-        { atributo: "cidade_id", nome: "Cidade ID" },
-        { atributo: "cota_rn_ana", nome: "Cota RN ANA" },
-        { atributo: "cota_rn_orto", nome: "Cota RN ORTO" },
-        { atributo: "integrado", nome: "Integrado" },
-        { atributo: "cd_estacao", nome: "CD Estação" }
-    ];
+//     let campoSelecionado = null;
+//     const filtros = [];
+//     let sugestoesEncontradas = [];
 
-    let campoSelecionado = null;
-    const filtros = [];
-    let sugestoesEncontradas = [];
+//     // Clicou numa sugestão
+//     sugestoes.addEventListener("click", (e) => {
 
-    // Clicou numa sugestão
-    sugestoes.addEventListener("click", (e) => {
+//         if (!e.target.classList.contains("dropdown-item"))
+//             return;
 
-        if (!e.target.classList.contains("dropdown-item"))
-            return;
+//         campoSelecionado = {
+//             atributo: e.target.dataset.atributo,
+//             nome: e.target.dataset.nome
+//         };
 
-        campoSelecionado = {
-            atributo: e.target.dataset.atributo,
-            nome: e.target.dataset.nome
-        };
+//         inputFiltro.value = campoSelecionado.nome + ": ";
 
-        inputFiltro.value = campoSelecionado.nome + ": ";
+//         sugestoes.classList.remove("show");
 
-        sugestoes.classList.remove("show");
+//         inputFiltro.focus();
 
-        inputFiltro.focus();
+//         sugestoes.innerHTML = "";
+//         sugestoesEncontradas = [];
 
-        sugestoes.innerHTML = "";
-        sugestoesEncontradas = [];
+//     });
 
-    });
+//     // Digitou no input
+//     inputFiltro.addEventListener("input", () => {
 
-    // Digitou no input
-    inputFiltro.addEventListener("input", () => {
+//         // Se já escolheu um campo, não mostra sugestões
+//         if (campoSelecionado) {
+//             sugestoes.classList.remove("show");
+//             sugestoes.innerHTML = "";
+//             sugestoesEncontradas = [];
+//             return;
+//         }
 
-        // Se já escolheu um campo, não mostra sugestões
-        if (campoSelecionado) {
-            sugestoes.classList.remove("show");
-            sugestoes.innerHTML = "";
-            sugestoesEncontradas = [];
-            return;
-        }
+//         const texto = inputFiltro.value;
 
-        const texto = inputFiltro.value;
+//         sugestoes.innerHTML = "";
 
-        sugestoes.innerHTML = "";
+//         if (texto.length === 0) {
+//             sugestoes.classList.remove("show");
+//             return;
+//         }
 
-        if (texto.length === 0) {
-            sugestoes.classList.remove("show");
-            return;
-        }
+//         sugestoesEncontradas = campos.filter(campo =>
+//             normalizar(campo.nome).includes(normalizar(texto))
+//         );
 
-        sugestoesEncontradas = campos.filter(campo =>
-            normalizar(campo.nome).includes(normalizar(texto))
-        );
+//         sugestoesEncontradas.forEach(campo => {
 
-        sugestoesEncontradas.forEach(campo => {
+//             sugestoes.innerHTML += `
+//                 <button
+//                     class="dropdown-item"
+//                     type="button"
+//                     data-atributo="${campo.atributo}"
+//                     data-nome="${campo.nome}">
+//                     ${campo.nome}
+//                 </button>
+//             `;
 
-            sugestoes.innerHTML += `
-                <button
-                    class="dropdown-item"
-                    type="button"
-                    data-atributo="${campo.atributo}"
-                    data-nome="${campo.nome}">
-                    ${campo.nome}
-                </button>
-            `;
+//         });
 
-        });
+//         if (sugestoesEncontradas.length > 0)
+//             sugestoes.classList.add("show");
+//         else
+//             sugestoes.classList.remove("show");
 
-        if (sugestoesEncontradas.length > 0)
-            sugestoes.classList.add("show");
-        else
-            sugestoes.classList.remove("show");
+//     });
 
-    });
+//     // Apertou Enter
+//     inputFiltro.addEventListener("keydown", (e) => {
 
-    // Apertou Enter
-    inputFiltro.addEventListener("keydown", (e) => {
+//         if (e.key !== "Enter")
+//             return;
 
-        if (e.key !== "Enter")
-            return;
+//         e.preventDefault();
 
-        e.preventDefault();
+//         // Escolher campo automaticamente
+//         if (!campoSelecionado) {
 
-        // Escolher campo automaticamente
-        if (!campoSelecionado) {
+//             if (sugestoesEncontradas.length === 0)
+//                 return;
 
-            if (sugestoesEncontradas.length === 0)
-                return;
+//             campoSelecionado = {
+//                 atributo: sugestoesEncontradas[0].atributo,
+//                 nome: sugestoesEncontradas[0].nome
+//             };
 
-            campoSelecionado = {
-                atributo: sugestoesEncontradas[0].atributo,
-                nome: sugestoesEncontradas[0].nome
-            };
+//             inputFiltro.value = campoSelecionado.nome + ": ";
 
-            inputFiltro.value = campoSelecionado.nome + ": ";
+//             sugestoes.classList.remove("show");
 
-            sugestoes.classList.remove("show");
+//             inputFiltro.focus();
 
-            inputFiltro.focus();
+//             sugestoes.innerHTML = "";
+//             sugestoesEncontradas = [];
 
-            sugestoes.innerHTML = "";
-            sugestoesEncontradas = [];
+//             return;
+//         }
 
-            return;
-        }
+//         // Criar filtro
+//         const valor = inputFiltro.value
+//             .replace(campoSelecionado.nome + ": ", "")
+//             .trim();
 
-        // Criar filtro
-        const valor = inputFiltro.value
-            .replace(campoSelecionado.nome + ": ", "")
-            .trim();
+//         if (!valor)
+//             return;
 
-        if (!valor)
-            return;
+//         filtros.push({
+//             atributo: campoSelecionado.atributo,
+//             nome: campoSelecionado.nome,
+//             valor: valor
+//         });
 
-        filtros.push({
-            atributo: campoSelecionado.atributo,
-            nome: campoSelecionado.nome,
-            valor: valor
-        });
+//         renderizarFiltros();
+//         aplicarFiltros();
 
-        renderizarFiltros();
-        aplicarFiltros();
+//         inputFiltro.value = "";
 
-        inputFiltro.value = "";
+//         campoSelecionado = null;
+//         sugestoes.innerHTML = "";
+//         sugestoesEncontradas = [];
 
-        campoSelecionado = null;
-        sugestoes.innerHTML = "";
-        sugestoesEncontradas = [];
+//     });
 
-    });
+//     // Desenha as tags
+//     function renderizarFiltros() {
 
-    // Desenha as tags
-    function renderizarFiltros() {
+//         filtrosAtivos.innerHTML = "";
 
-        filtrosAtivos.innerHTML = "";
+//         filtros.forEach((filtro, indice) => {
 
-        filtros.forEach((filtro, indice) => {
+//             filtrosAtivos.innerHTML += `
+//             <span class="badge bg-primary fs-7">
+//                 ${filtro.nome}: ${filtro.valor}
 
-            filtrosAtivos.innerHTML += `
-            <span class="badge bg-primary fs-7">
-                ${filtro.nome}: ${filtro.valor}
+//                 <i
+//                     class="bi bi-x ms-2 remover-filtro"
+//                     data-indice="${indice}"
+//                     style="cursor:pointer">
+//                 </i>
+//             </span>
+//         `;
 
-                <i
-                    class="bi bi-x ms-2 remover-filtro"
-                    data-indice="${indice}"
-                    style="cursor:pointer">
-                </i>
-            </span>
-        `;
+//         });
 
-        });
+//     }
+//     // Remover filtro
+//     filtrosAtivos.addEventListener("click", (e) => {
 
-    }
-    // Remover filtro
-    filtrosAtivos.addEventListener("click", (e) => {
+//         if (!e.target.classList.contains("remover-filtro"))
+//             return;
 
-        if (!e.target.classList.contains("remover-filtro"))
-            return;
+//         const indice = parseInt(e.target.dataset.indice);
 
-        const indice = parseInt(e.target.dataset.indice);
+//         filtros.splice(indice, 1);
 
-        filtros.splice(indice, 1);
+//         renderizarFiltros();
+//         aplicarFiltros();
 
-        renderizarFiltros();
-        aplicarFiltros();
+//     });
 
-    });
 
 
+//     // Aplica os filtros
+//     function aplicarFiltros() {
 
-    // Aplica os filtros
-    function aplicarFiltros() {
+//         linhasPrincipais.forEach(principal => {
 
-        linhasPrincipais.forEach(principal => {
+//             const detalhes = principal.nextElementSibling;
 
-            const detalhes = principal.nextElementSibling;
+//             const mostrar = filtros.every(filtro => {
 
-            const mostrar = filtros.every(filtro => {
+//                 const valorLinha = normalizar(
+//                     String(principal.dataset[filtro.atributo] || "")
+//                 );
 
-                const valorLinha = normalizar(
-                    String(principal.dataset[filtro.atributo] || "")
-                );
+//                 const valorFiltro = normalizar(filtro.valor);
 
-                const valorFiltro = normalizar(filtro.valor);
+//                 return valorLinha.includes(valorFiltro);
 
-                return valorLinha.includes(valorFiltro);
+//             });
 
-            });
+//             principal.style.display = mostrar ? "" : "none";
 
-            principal.style.display = mostrar ? "" : "none";
+//             if (detalhes) {
+//                 detalhes.style.display = mostrar ? "" : "none";
+//             }
 
-            if (detalhes) {
-                detalhes.style.display = mostrar ? "" : "none";
-            }
+//         });
 
-        });
+//     }
 
-    }
-
-});
+// });
 
 
 function normalizar(texto) {
@@ -236,3 +237,38 @@ function normalizar(texto) {
         .toLowerCase();
 }
 
+// ========= ALTERNAR LINHA -> LINHA EDIÇÃO ===============
+document.addEventListener("DOMContentLoaded", () => {
+    const botoesEditar = document.querySelectorAll('.botoes-ir-para-edicao');
+    botoesEditar.forEach(botao => {
+        botao.addEventListener('click', function () {
+            const idSelecionado = this.dataset.id;
+            alert(idSelecionado);
+            startEdit(idSelecionado);
+        });
+    });
+
+    const botoesCancelar = document.querySelectorAll('.botoes-cancelar-edicao');
+    botoesCancelar.forEach(botao => {
+        botao.addEventListener('click', function () {
+            const idSelecionado = this.dataset.id;
+            cancelEdit(idSelecionado);
+        });
+    });
+
+
+
+
+
+});
+
+
+function startEdit(id) {
+    document.querySelector(`.linha-dados[data-id="${id}"]`).classList.add('d-none');
+    document.querySelector(`.linha-edicao[data-id="${id}"]`).classList.remove('d-none');
+}
+
+function cancelEdit(id) {
+    document.querySelector(`.linha-edicao[data-id="${id}"]`).classList.add('d-none');
+    document.querySelector(`.linha-dados[data-id="${id}"]`).classList.remove('d-none');
+}

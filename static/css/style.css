@@ -2,8 +2,11 @@
   --verde: #198754;
   --azul: #015C91;
   --amarelo: #e6a817;
-  --laranja: #d85a30;
+  --laranja: #F28500;
   --vermelho: #ff0100;
+  --size-2px: 2px;
+  --size-4px: 4px;
+  --size-6px: 6px;
 }
 
 .fs-7 {
@@ -18,36 +21,77 @@
   background-color: white;
 }
 
+
+
+/* ======= BACKGROUNDS ====== */
+.bg-amarelo {
+  background-color: var(--amarelo);
+}
+
+.bg-laranja {
+  background-color: var(--laranja);
+}
+
+.bg-vermelho {
+  background-color: var(--vermelho);
+}
+
+
 /* ======  BORDERS  ====== */
+
+/* size */
+.border-size-2 {
+  border-width: var(--size-2px);
+}
+
+.border-size-4 {
+  border-width: var(--size-4px);
+}
+
+.border-size-6 {
+  border-width: var(--size-6px);
+}
 
 /* top */
 .border-top-color-verde {
-  border-top: 6px solid var(--verde);
+  border-top: solid var(--verde);
 }
 
 /* bottom */
 .border-bottom-color-verde {
-  border-bottom: 6px solid var(--verde);
+  border-bottom: solid var(--verde);
+}
+
+.border-bottom-color-amarelo {
+  border-bottom: solid var(--amarelo);
+}
+
+.border-bottom-color-laranja {
+  border-bottom: solid var(--laranja);
+}
+
+.border-bottom-color-vermelho {
+  border-bottom: solid var(--vermelho);
 }
 
 
 /* left's */
 .border-left-color-verde {
-  border-left: 6px solid var(--verde);
+  border-left: solid var(--verde);
 }
 
 .border-left-color-azul {
-  border-left: 6px solid var(--azul);
+  border-left: solid var(--azul);
 }
 
 .border-left-color-amarelo {
-  border-left: 6px solid var(--amarelo);
+  border-left: solid var(--amarelo);
 }
 
 .border-left-color-laranja {
-  border-left: 6px solid var(--laranja);
+  border-left: solid var(--laranja);
 }
 
 .border-left-color-vermelho {
-  border-left: 6px solid var(--vermelho);
+  border-left: solid var(--vermelho);
 }
