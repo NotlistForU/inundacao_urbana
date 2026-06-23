@@ -30,12 +30,12 @@
         {% include "componentes/_stats_cards.html" %}
     </div>
     <div class="container-fluid px-4">
-        <div class=" border-bottom-color-verde rounded-4 overflow-hidden">
+        <div class=" border-bottom-color-verde-width-6 shadow rounded-4 overflow-hidden">
             <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
 
                 <table class="table  table-hover align-middle table-sticky">
                     <thead class="sticky-top">
-                        <tr class="border-bottom-color-verde rounded-4">
+                        <tr class="border-bottom-color-verde-width-2">
                             {% include "componentes/_table_colunas.html" %}
                             <th class="text-center">
                                 <span>ações</span>
@@ -60,7 +60,8 @@
                                 </button>
                                 <!-- botão linha dados excluir -->
                                 <button class="btn btn-sm border-bottom-color-vermelho border-size-2"
-                                    data-bs-toggle="modal" data-bs-target="#modalExcluir" data-id="{{ item.id }}">
+                                    data-bs-toggle="modal" data-bs-target="#modalExcluir" data-id="{{ item.id }}"
+                                    data-cd_geocodi="{{ item.cd_geocodi }}">
                                     <i class="bi bi-trash"></i>
                                 </button>
 
@@ -68,7 +69,8 @@
                         </tr>
 
                         <!-- LINHA EDiÇÃO -->
-                        <tr class="linha-edicao d-none" data-id="{{ item.id }}">
+                        <tr class="linha-edicao d-none border-bottom-color-verde-width-2 border-top-color-verde-width-2"
+                            data-id="{{ item.id }}">
 
                             <td colspan="17">
                                 <div>
@@ -102,36 +104,8 @@
                 </table>
 
                 <!-- Modais  -->
-                <div class="modal fade" id="modalEditar">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <span>Editar dado</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalExcluir" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Excluir dado</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <span>Deseja excluir <strong id="idItem"></strong>?</span>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger">Sim, excluir</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                {% include "componentes/_modal_novo_registro.html" %}
+                {% include "componentes/_modal_excluir_registro.html" %}
 
             </div>
 

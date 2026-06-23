@@ -1,7 +1,7 @@
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
     <!-- Card 1 -->
     <div class="col">
-        <div class="stats-card d-flex flex-column rounded-4 p-2 h-100  border-left-color-verde border-size-6">
+        <div class="stats-card d-flex flex-column rounded-4 shadow p-2 h-100  border-left-color-verde-width-6">
             <span><i class="bi bi-broadcast-pin"></i> Total de estações</span>
             <h4 class="m-0">{{ num_estacoes}}</h4>
             <span class="fs-7">em {{ num_municipios }} municípios</span>
@@ -10,7 +10,7 @@
 
     <!-- Card 2 -->
     <div class="col">
-        <div class="stats-card d-flex flex-column  rounded-4 p-2 h-100 border-left-color-azul border-size-6">
+        <div class="stats-card d-flex flex-column rounded-4 shadow p-2 h-100 border-left-color-azul-width-6">
             <span><i class="bi bi-link-45deg"></i> integradas</span>
             <h4>{{ num_integrado }}</h4>
             <span class="fs-7">{{ por_cent_integrado }}% do total</span>
@@ -19,7 +19,7 @@
 
     <!-- Card 3 -->
     <div class="col">
-        <div class="stats-card d-flex flex-column   rounded-4 p-2 h-100  border-left-color-amarelo border-size-6">
+        <div class="stats-card d-flex flex-column rounded-4 shadow  p-2 h-100  border-left-color-amarelo-width-6">
             <span><i class="bi bi-exclamation-triangle-fill"></i> cota atenção</span>
             <h4>{{ num_cota_atencao }}</h4>
             <span class="fs-7">acima da normalidade</span>
@@ -28,7 +28,7 @@
 
     <!-- Card 4 -->
     <div class="col">
-        <div class="stats-card d-flex flex-column   rounded-4 p-2 h-100  border-left-color-laranja border-size-6">
+        <div class="stats-card d-flex flex-column rounded-4 shadow p-2 h-100  border-left-color-laranja-width-6">
             <span><i class="bi bi-bell-fill"></i> cota alerta</span>
             <h4>{{ num_cota_alerta }}</h4>
             <span class="fs-7">proximo de uma inundação</span>
@@ -37,7 +37,7 @@
 
     <!-- Card 5 -->
     <div class="col">
-        <div class="stats-card d-flex flex-column   rounded-4 p-2 h-100  border-left-color-vermelho border-size-6">
+        <div class="stats-card d-flex flex-column rounded-4 shadow p-2 h-100  border-left-color-vermelho-width-6">
             <span><i class="bi bi-water"></i> cota Inundação</span>
             <h4> {{ num_cota_inundacao }}</h4>
             <span class="fs-7">acima de áreas habitadas</span>

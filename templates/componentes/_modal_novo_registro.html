@@ -1,0 +1,160 @@
+<div class="modal fade" id="modalNovoRegistro" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Adicionar novo registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="">
+                        <div class="row g-3">
+                            <!-- Para Textos e Números -->
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cd_geocodi
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="text" name="cd_geocodi" value=""
+                                    placeholder="Geocódigo">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        municipio
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="text" name="municipio" value=""
+                                    placeholder="Município">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cd_estacao
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="cd_estacao" value=""
+                                    placeholder="Estação" step="1">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        longitude
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="longitude" value=""
+                                    placeholder="Longitude" step="0.000000001">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        latitude
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="latitude"
+                                    value="{{ item.latitude|default:'' }}" placeholder="Latitude" step="0.00000001">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cota_rn_ana
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="cota_rn_ana" value=""
+                                    placeholder="RN ANA" step="1">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cota_rn_orto
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="cota_rn_orto" value=""
+                                    placeholder="RN Orto" step="1">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cota_atencao
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="cota_atencao" value=""
+                                    placeholder="Atenção" step="0.01">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cota_alerta
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="cota_alerta" value=""
+                                    placeholder="Alerta" step="0.01">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cota_inundacao
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="cota_inundacao" value=""
+                                    placeholder="Inundação" step="0.01">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cota_maxima
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="cota_maxima" value=""
+                                    placeholder="Máxima" step="0.01">
+                            </div>
+
+                            <!-- Para Data (Se for None, exibe vazio) -->
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        data_voo
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="date" name="data_voo" value="" placeholder="Data voo">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">
+                                    <strong>
+                                        cidade_id
+                                    </strong>
+                                </label>
+                                <input class="form-control" type="number" name="cidade_id" value=""
+                                    placeholder="Cidade ID" step="1">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <div class=" d-flex justify-content-end gap-2 ">
+                    <!-- botão salvar novo registro -->
+                    <button class="btn btn-sm btn-success" onclick="">Salvar</button>
+                    <!-- botao cancelar edição -->
+                    <button class="btn btn-sm btn-secondary" onclick="">Cancelar</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

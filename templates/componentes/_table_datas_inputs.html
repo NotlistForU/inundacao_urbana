@@ -1,67 +1,111 @@
 <div class="row g-3">
     <!-- Para Textos e Números -->
     <div class="col-md-3">
-        <label class="form-label">cd_geocodi</label>
+        <label class="form-label">
+            <strong>
+                cd_geocodi
+            </strong>
+        </label>
         <input class="form-control" type="text" name="cd_geocodi" value="{{ item.cd_geocodi|default:'' }}"
             placeholder="Geocódigo">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">municipio</label>
+        <label class="form-label">
+            <strong>
+                municipio
+            </strong>
+        </label>
         <input class="form-control" type="text" name="municipio" value="{{ item.municipio|default:'' }}"
             placeholder="Município">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">cd_estacao</label>
+        <label class="form-label">
+            <strong>
+                cd_estacao
+            </strong>
+        </label>
         <input class="form-control" type="number" name="cd_estacao" value="{{ item.cd_estacao|default:'' }}"
             placeholder="Estação" step="1">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">longitude</label>
+        <label class="form-label">
+            <strong>
+                longitude
+            </strong>
+        </label>
         <input class="form-control" type="number" name="longitude" value="{{ item.longitude|default:'' }}"
             placeholder="Longitude" step="0.000000001">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">latitude</label>
+        <label class="form-label">
+            <strong>
+                latitude
+            </strong>
+        </label>
         <input class="form-control" type="number" name="latitude" value="{{ item.latitude|default:'' }}"
             placeholder="Latitude" step="0.00000001">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">cota_rn_ana</label>
+        <label class="form-label">
+            <strong>
+                cota_rn_ana
+            </strong>
+        </label>
         <input class="form-control" type="number" name="cota_rn_ana" value="{{ item.cota_rn_ana|default:'' }}"
             placeholder="RN ANA" step="1">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">cota_rn_orto</label>
+        <label class="form-label">
+            <strong>
+                cota_rn_orto
+            </strong>
+        </label>
         <input class="form-control" type="number" name="cota_rn_orto" value="{{ item.cota_rn_orto|default:'' }}"
             placeholder="RN Orto" step="1">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">cota_atencao</label>
+        <label class="form-label">
+            <strong>
+                cota_atencao
+            </strong>
+        </label>
         <input class="form-control" type="number" name="cota_atencao" value="{{ item.cota_atencao|default:'' }}"
             placeholder="Atenção" step="0.01">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">cota_alerta</label>
+        <label class="form-label">
+            <strong>
+                cota_alerta
+            </strong>
+        </label>
         <input class="form-control" type="number" name="cota_alerta" value="{{ item.cota_alerta|default:'' }}"
             placeholder="Alerta" step="0.01">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">cota_inundacao</label>
+        <label class="form-label">
+            <strong>
+                cota_inundacao
+            </strong>
+        </label>
         <input class="form-control" type="number" name="cota_inundacao" value="{{ item.cota_inundacao|default:'' }}"
             placeholder="Inundação" step="0.01">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">cota_maxima</label>
+        <label class="form-label">
+            <strong>
+                cota_maxima
+            </strong>
+        </label>
         <input class="form-control" type="number" name="cota_maxima" value="{{ item.cota_maxima|default:'' }}"
             placeholder="Máxima" step="0.01">
     </div>
@@ -69,13 +113,21 @@
     <!-- Para Data (Se for None, exibe vazio) -->
 
     <div class="col-md-3">
-        <label class="form-label">data_voo</label>
+        <label class="form-label">
+            <strong>
+                data_voo
+            </strong>
+        </label>
         <input class="form-control" type="date" name="data_voo"
             value="{% if item.data_voo %}{{ item.data_voo|date:'Y-m-d' }}{% endif %}" placeholder="Data voo">
     </div>
 
     <div class="col-md-3">
-        <label class="form-label">cidade_id</label>
+        <label class="form-label">
+            <strong>
+                cidade_id
+            </strong>
+        </label>
         <input class="form-control" type="number" name="cidade_id" value="{{ item.cidade_id|default:'' }}"
             placeholder="Cidade ID" step="1">
     </div>

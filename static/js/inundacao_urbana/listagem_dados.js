@@ -243,7 +243,6 @@ document.addEventListener("DOMContentLoaded", () => {
     botoesEditar.forEach(botao => {
         botao.addEventListener('click', function () {
             const idSelecionado = this.dataset.id;
-            alert(idSelecionado);
             startEdit(idSelecionado);
         });
     });
@@ -256,10 +255,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+});
 
 
+// =========== MODAL EXCLUIR REGISTRO ===============
+const modalExcluirRegistro = document.getElementById('modalExcluir');
+modalExcluirRegistro.addEventListener('show.bs.modal', function (event) {
+    // botao q disparou o addEventListener
+    const botao = event.relatedTarget;
 
-
+    const idRegistro = botao.dataset.id;
+    const cd_geocodiRegistro = botao.dataset.cd_geocodi;
+    const strongId = modalExcluirRegistro.querySelector('#idRegistro');
+    const spanId = modalExcluirRegistro.querySelector('#cd_geocodiRegistro');
+    strongId.textContent = `ID: #${idRegistro}`;
+    spanId.textContent = ` | cd_geocodi: ${cd_geocodiRegistro}`;
 });
 
 
