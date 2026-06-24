@@ -239,6 +239,10 @@ function normalizar(texto) {
 
 // ========= Ordernar registros ============
 
+let ordemAtual = {
+    campo: null,
+    direcao: null
+};
 
 const todosDados = JSON.parse(document.getElementById("dados-json").textContent);
 let dadosExibidos = [...todosDados];
@@ -247,18 +251,24 @@ const columnsCampos = document.querySelectorAll('[id$="-column-campo"]');
 columnsCampos.forEach(columnCampo => {
     columnCampo.addEventListener('click', () => {
         const campo = columnCampo.id.replace('-column-campo', '');
-        reordenarDadosExibidos(campo);
+        reordenarDadosExibidos(campo, true);
     });
 });
 
 
 
-function reordenarDadosExibidos(campo) {
+function reordenarDadosExibidos(campo, isCrescente) {
+    ordemAtual.campo = campo;
+    ordemAtual.direcao = isCrescente ? 'crescente' : 'decrescente';
+    alert(`${ordemAtual.campo}, ${ordemAtual.direcao}`);
     dadosExibidos.sort((a, b) => {
-        if (a[campo] == null) return 1;
-        if (b[campo] == null) return -1;
-        if (campo == 'municipio') return a[campo].localeCompare(b[campo]);
-        return Number(a[campo]) - Number(b[campo]);
+        const primeiro = isCrescente ? a : b;
+        const segundo = isCrescente ? b : a;
+
+        if (primeiro[campo] == null) return 1;
+        if (segundo[campo] == null) return -1;
+        if (campo == 'municipio') return primeiro[campo].localeCompare(segundo[campo]);
+        return Number(primeiro[campo]) - Number(segundo[campo]);
     });
     reordenarTabela();
 }
