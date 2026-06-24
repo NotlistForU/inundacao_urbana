@@ -21,6 +21,17 @@
   background-color: white;
 }
 
+.bi-sort-down {
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  display: inline-block;
+  transform-origin: center;
+}
+
+.bi-sort-down:hover {
+  color: var(--verde);
+  transform: scale(1.15);
+}
+
 
 
 /* ======= BACKGROUNDS ====== */

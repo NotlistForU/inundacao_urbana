@@ -42,7 +42,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody-dados">
                         {% for item in dados %}
 
                         <!-- LINHA DE DADOS -->
@@ -60,7 +60,7 @@
                                 </button>
                                 <!-- botão linha dados excluir -->
                                 <button class="btn btn-sm border-bottom-color-vermelho border-size-2"
-                                    data-bs-toggle="modal" data-bs-target="#modalExcluir" data-id="{{ item.id }}"
+                                    data-bs-toggle="modal" data-bs-target="#modal-excluir" data-id="{{ item.id }}"
                                     data-cd_geocodi="{{ item.cd_geocodi }}">
                                     <i class="bi bi-trash"></i>
                                 </button>

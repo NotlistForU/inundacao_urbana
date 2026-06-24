@@ -237,6 +237,46 @@ function normalizar(texto) {
         .toLowerCase();
 }
 
+// ========= Ordernar registros ============
+
+
+const todosDados = JSON.parse(document.getElementById("dados-json").textContent);
+let dadosExibidos = [...todosDados];
+
+const columnsCampos = document.querySelectorAll('[id$="-column-campo"]');
+columnsCampos.forEach(columnCampo => {
+    columnCampo.addEventListener('click', () => {
+        const campo = columnCampo.id.replace('-column-campo', '');
+        reordenarDadosExibidos(campo);
+    });
+});
+
+
+
+function reordenarDadosExibidos(campo) {
+    dadosExibidos.sort((a, b) => {
+        if (a[campo] == null) return 1;
+        if (b[campo] == null) return -1;
+        if (campo == 'municipio') return a[campo].localeCompare(b[campo]);
+        return Number(a[campo]) - Number(b[campo]);
+    });
+    reordenarTabela();
+}
+
+
+
+function reordenarTabela() {
+    const tbody = document.getElementById("tbody-dados");
+    dadosExibidos.forEach(item => {
+        const linhaDados = document.querySelector(`.linha-dados[data-id="${item.id}"]`);
+        const linhaEdicao = document.querySelector(`.linha-edicao[data-id="${item.id}"]`);
+
+        tbody.appendChild(linhaDados);
+        tbody.appendChild(linhaEdicao);
+    });
+}
+
+
 // ========= ALTERNAR LINHA -> LINHA EDIÇÃO ===============
 document.addEventListener("DOMContentLoaded", () => {
     const botoesEditar = document.querySelectorAll('.botoes-ir-para-edicao');
@@ -258,16 +298,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// =========== MODAL EXCLUIR REGISTRO ===============
-const modalExcluirRegistro = document.getElementById('modalExcluir');
+// =========== MODAL EXCLUIR REGISTRO =====================
+const modalExcluirRegistro = document.getElementById('modal-excluir');
 modalExcluirRegistro.addEventListener('show.bs.modal', function (event) {
     // botao q disparou o addEventListener
     const botao = event.relatedTarget;
 
     const idRegistro = botao.dataset.id;
     const cd_geocodiRegistro = botao.dataset.cd_geocodi;
-    const strongId = modalExcluirRegistro.querySelector('#idRegistro');
-    const spanId = modalExcluirRegistro.querySelector('#cd_geocodiRegistro');
+    const strongId = modalExcluirRegistro.querySelector('#id-registro');
+    const spanId = modalExcluirRegistro.querySelector('#cd_geocodi-registro');
     strongId.textContent = `ID: #${idRegistro}`;
     spanId.textContent = ` | cd_geocodi: ${cd_geocodiRegistro}`;
 });
