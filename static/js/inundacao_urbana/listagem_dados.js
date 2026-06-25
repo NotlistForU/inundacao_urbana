@@ -239,34 +239,57 @@ function normalizar(texto) {
 
 // ========= Ordernar registros ============
 
-let ordemAtual = {
-    campo: null,
-    direcao: null
-};
+function trocarDirecao(direcao) {
+    if (direcao === "decrescente") return 'crescente';
+    return 'decrescente';
+}
+
+function trocarClassSort(direcao) {
+    if (direcao === "decrescente") return 'up';
+    return 'down';
+}
 
 const todosDados = JSON.parse(document.getElementById("dados-json").textContent);
 let dadosExibidos = [...todosDados];
 
 const columnsCampos = document.querySelectorAll('[id$="-column-campo"]');
 columnsCampos.forEach(columnCampo => {
-    columnCampo.addEventListener('click', () => {
+    columnCampo.addEventListener('click', function () {
         const campo = columnCampo.id.replace('-column-campo', '');
-        reordenarDadosExibidos(campo, true);
+
+        // reseta os icones sort das outras colunas 
+        columnsCampos.forEach(outraColumn => {
+            if (outraColumn !== this) {
+                outraColumn.dataset.direcao = ""; // Deixa o data vazio
+                outraColumn.classList.remove('bi-sort-up', 'bi-sort-down');
+                outraColumn.classList.add('bi-sort-down'); // Volta pro padrão down
+            }
+        })
+
+        let direcao = this.dataset.direcao;
+        direcao = trocarDirecao(direcao);
+
+        reordenarDadosExibidos(campo, direcao);
+        this.dataset.direcao = direcao;
+        let sortClassName = trocarClassSort(direcao);
+
+        // 1. Remove as duas classe  "bi-sort-"
+        this.classList.remove('bi-sort-up', 'bi-sort-down');
+        this.classList.add(`bi-sort-${sortClassName}`);
+
     });
 });
 
 
 
-function reordenarDadosExibidos(campo, isCrescente) {
-    ordemAtual.campo = campo;
-    ordemAtual.direcao = isCrescente ? 'crescente' : 'decrescente';
-    alert(`${ordemAtual.campo}, ${ordemAtual.direcao}`);
+function reordenarDadosExibidos(campo, direcao) {
     dadosExibidos.sort((a, b) => {
-        const primeiro = isCrescente ? a : b;
-        const segundo = isCrescente ? b : a;
+        // deixa os Nones no final sempre
+        if (a[campo] == null || a[campo] === '') return 1;
+        if (b[campo] == null || b[campo] === '') return -1;
 
-        if (primeiro[campo] == null) return 1;
-        if (segundo[campo] == null) return -1;
+        const primeiro = direcao == 'crescente' ? a : b;
+        const segundo = direcao == 'crescente' ? b : a;
         if (campo == 'municipio') return primeiro[campo].localeCompare(segundo[campo]);
         return Number(primeiro[campo]) - Number(segundo[campo]);
     });
