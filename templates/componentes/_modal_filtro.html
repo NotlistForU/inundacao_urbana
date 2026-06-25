@@ -1,0 +1,105 @@
+<div class="modal fade" id="modal-filtro" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Filtros</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <!-- Localização -->
+                <div class="mb-4">
+                    <h6 class="border-bottom pb-2">Localização</h6>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Município</label>
+                            <input type="text" class="form-control" placeholder="Ex: Porto Velho">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Código estação</label>
+                            <input type="text" class="form-control" placeholder="Ex: 15400000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data -->
+                <div class="mb-4">
+                    <h6 class="border-bottom pb-2">Data do voo</h6>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">De</label>
+                            <input type="date" class="form-control">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Até</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cotas -->
+                <div>
+                    <h6 class="border-bottom pb-2">Cotas</h6>
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label class="form-label">Alerta</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="Mín">
+                                <span class="input-group-text">até</span>
+                                <input type="number" class="form-control" placeholder="Máx">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Atenção</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="Mín">
+                                <span class="input-group-text">até</span>
+                                <input type="number" class="form-control" placeholder="Máx">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Inundação</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="Mín">
+                                <span class="input-group-text">até</span>
+                                <input type="number" class="form-control" placeholder="Máx">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Máxima</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="Mín">
+                                <span class="input-group-text">até</span>
+                                <input type="number" class="form-control" placeholder="Máx">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">
+                    Limpar
+                </button>
+
+                <button class="btn btn-primary">
+                    Aplicar filtros
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

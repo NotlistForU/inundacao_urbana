@@ -237,18 +237,10 @@ function normalizar(texto) {
         .toLowerCase();
 }
 
-// ========= Ordernar registros ============
 
-function trocarDirecao(direcao) {
-    if (direcao === "decrescente") return 'crescente';
-    return 'decrescente';
-}
 
-function trocarClassSort(direcao) {
-    if (direcao === "decrescente") return 'up';
-    return 'down';
-}
 
+// ========= Ordernar registros ==================================================== OK
 const todosDados = JSON.parse(document.getElementById("dados-json").textContent);
 let dadosExibidos = [...todosDados];
 
@@ -309,8 +301,18 @@ function reordenarTabela() {
     });
 }
 
+function trocarDirecao(direcao) {
+    if (direcao === "decrescente") return 'crescente';
+    return 'decrescente';
+}
 
-// ========= ALTERNAR LINHA -> LINHA EDIÇÃO ===============
+function trocarClassSort(direcao) {
+    if (direcao === "decrescente") return 'up';
+    return 'down';
+}
+
+
+// ========= ALTERNAR LINHA -> LINHA EDIÇÃO =============================
 document.addEventListener("DOMContentLoaded", () => {
     const botoesEditar = document.querySelectorAll('.botoes-ir-para-edicao');
     botoesEditar.forEach(botao => {
