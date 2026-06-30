@@ -16,12 +16,12 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Município</label>
-                            <input type="text" class="form-control" placeholder="Ex: Porto Velho">
+                            <input id="filtro-municipio" type="text" class="form-control" placeholder="Ex: Porto Velho">
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Código estação</label>
-                            <input type="text" class="form-control" placeholder="Ex: 15400000">
+                            <input id="filtro-cd_estacao" type="text" class="form-control" placeholder="Ex: 15400000">
                         </div>
                     </div>
                 </div>
@@ -33,12 +33,12 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">De</label>
-                            <input type="date" class="form-control">
+                            <input id="filtro-inicio-data_voo" type="date" class="form-control">
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Até</label>
-                            <input type="date" class="form-control">
+                            <input id="filtro-final-data_voo" type="date" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -52,36 +52,44 @@
                         <div class="col-md-6">
                             <label class="form-label">Alerta</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" placeholder="Mín">
+                                <input id="filtro-inicio-cota_alerta" type="number" class="form-control"
+                                    placeholder="Mín">
                                 <span class="input-group-text">até</span>
-                                <input type="number" class="form-control" placeholder="Máx">
+                                <input id="filtro-final-cota_alerta" type="number" class="form-control"
+                                    placeholder="Máx">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Atenção</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" placeholder="Mín">
+                                <input id="filtro-inicio-cota_atencao" type="number" class="form-control"
+                                    placeholder="Mín">
                                 <span class="input-group-text">até</span>
-                                <input type="number" class="form-control" placeholder="Máx">
+                                <input id="filtro-final-cota_atencao" type="number" class="form-control"
+                                    placeholder="Máx">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Inundação</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" placeholder="Mín">
+                                <input id="filtro-inicio-cota_inundacao" type="number" class="form-control"
+                                    placeholder="Mín">
                                 <span class="input-group-text">até</span>
-                                <input type="number" class="form-control" placeholder="Máx">
+                                <input id="filtro-final-cota_inundacao" type="number" class="form-control"
+                                    placeholder="Máx">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Máxima</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" placeholder="Mín">
+                                <input id="filtro-inicio-cota_maxima" type="number" class="form-control"
+                                    placeholder="Mín">
                                 <span class="input-group-text">até</span>
-                                <input type="number" class="form-control" placeholder="Máx">
+                                <input id="filtro-final-cota_maxima" type="number" class="form-control"
+                                    placeholder="Máx">
                             </div>
                         </div>
 
@@ -95,7 +103,7 @@
                     Limpar
                 </button>
 
-                <button class="btn btn-primary">
+                <button type="button" class="btn btn-primary" id="btn-aplicar-filtros">
                     Aplicar filtros
                 </button>
             </div>

@@ -3,7 +3,6 @@ from core.models import InundacaoUrbana
 from django.forms.models import model_to_dict
 import json
 # Create your views here.
-
 def view_listagem_dados(request):    
     dados = InundacaoUrbana.objects.all()
     dados_json = [

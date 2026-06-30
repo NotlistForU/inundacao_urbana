@@ -77,11 +77,20 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'hidrometeorologia',
+        'USER': 'postgres',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5433',
+    },
+    'producao': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hidrometeorologia',
         'USER': 'CRPV',
         'HOST': '172.22.5.54',
         'PASSWORD': '1eD6t9QB',
         'PORT': '5432',
-    }
+    },
+    
 }
 
 
