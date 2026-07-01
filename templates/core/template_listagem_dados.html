@@ -27,13 +27,17 @@
 
     <div class="container-fluid p-4">
         <!-- stats cards -->
-        {% include "componentes/_stats_cards.html" %}
+        {% include "componentes/listagem_dados/_stats_cards.html" %}
     </div>
     <div class="container-fluid px-4">
         <div class="d-flex justify-content-end align-items-center gap-2">
             <button class="btn shadow m-2" data-bs-toggle="modal" data-bs-target="#modal-filtro"><i
                     class="bi bi-search mx-1"></i>
                 Adicionar filtro</button>
+            <div class="d-flex justify-content-end">
+                <button class="btn shadow m-2 fs-6 m-2" data-bs-toggle="modal" data-bs-target="#modal-novo-registro">+
+                    Novo registro</button>
+            </div>
 
         </div>
         <div class=" border-bottom-color-verde-width-6 shadow rounded-4 overflow-hidden">
@@ -42,7 +46,7 @@
                 <table class="table  table-hover align-middle table-sticky">
                     <thead class="sticky-top">
                         <tr class="border-bottom-color-verde-width-2">
-                            {% include "componentes/_table_colunas.html" %}
+                            {% include "componentes/listagem_dados/_table_colunas.html" %}
                             <th class="text-center">
                                 <span>ações</span>
                             </th>
@@ -53,7 +57,7 @@
 
                         <!-- LINHA DE DADOS -->
                         <tr class="linha-dados" data-id="{{ item.id }}">
-                            {% include "componentes/_table_datas.html" %}
+                            {% include "componentes/listagem_dados/_table_datas.html" %}
 
                             <!-- botões de ações -->
                             <td class="text-center">
@@ -87,7 +91,7 @@
 
                                 </div>
                                 <div class="d-flex flex-wrap gap-2 align-items-center py-1">
-                                    {% include "componentes/_table_datas_inputs.html" %}
+                                    {% include "componentes/listagem_dados/_table_datas_inputs.html" %}
                                 </div>
 
                                 <div class=" d-flex justify-content-end gap-2 ">
@@ -112,20 +116,20 @@
                 <!-- Modais  -->
 
                 <!-- Modal Filtro -->
-                {% include "componentes/_modal_filtro.html" %}
+                {% include "componentes/listagem_dados/_modal_filtro.html" %}
 
                 <!-- Modal Novo Registro -->
-                {% include "componentes/_modal_novo_registro.html" %}
+                {% include "componentes/listagem_dados/_modal_novo_registro.html" %}
 
                 <!-- Modal Excluir Registro -->
-                {% include "componentes/_modal_excluir_registro.html" %}
+                {% include "componentes/listagem_dados/_modal_excluir_registro.html" %}
 
             </div>
 
         </div>
 
-
     </div>
+
 
     {{ dados_json|json_script:"dados-json" }}
 

@@ -12,6 +12,8 @@ from . import views
 urlpatterns = [
 # if(url = listagem_dados/){
     # Quando acessar 'listagem_dados/', chama a função 'listagem_dados' da views.py
-    path('listagem_dados/', views.view_listagem_dados, name='rota_listagem_dados')
+    path('listagem_dados/', views.view_listagem_dados, name='rota_listagem_dados'),
+    path('login/', views.view_login, name='rota_login'),
+    path('historico_alteracoes/', views.view_historico_alteracoes, name='rota_historico_alteracoes')
 #}
 ]

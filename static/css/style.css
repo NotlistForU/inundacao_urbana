@@ -32,6 +32,16 @@
   transform: scale(1.15);
 }
 
+.btn {
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  display: inline-block;
+  transform-origin: center;
+}
+
+.btn:hover {
+  transform: scale(1.15);
+}
+
 
 
 /* ======= BACKGROUNDS ====== */
@@ -49,6 +59,11 @@
 
 
 /* ======================  BORDERS  ================================================ */
+.border-color-verde-width-2 {
+  border: solid var(--size-2px) var(--verde);
+}
+
+
 
 /* top */
 .border-top-color-vermelho-width-2 {

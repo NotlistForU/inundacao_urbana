@@ -34,6 +34,12 @@ function normalizar(texto) {
 
 
 // ========== Filtragem de registros ===============================================
+const btnLimparFiltros = document.getElementById('btn-limpar-filtros');
+btnLimparFiltros.addEventListener('click', () => {
+    dadosExibidos = [...todosDados];
+    reordenarTabela();
+});
+
 const btnAplicarFiltros = document.getElementById('btn-aplicar-filtros');
 btnAplicarFiltros.addEventListener('click', () => {
     aplicarFiltros();
@@ -116,7 +122,7 @@ function filtroData(dataInicioFiltro, dataFimFiltro, valorItem) {
     if (!dataInicioFiltro && !dataFimFiltro) { return true; }
     if (!valorItem) { return false; }
     if (dataInicioFiltro && (valorItem < dataInicioFiltro)) { return false; }
-    if (dataFimFiltro && (valorItem < dataFimFiltro)) { return false; }
+    if (dataFimFiltro && (valorItem > dataFimFiltro)) { return false; }
     // temValorItemDentroDeDataInicioEDataFimDoFiltro = true;
     return true;
 }
@@ -162,7 +168,12 @@ function reordenarDadosExibidos(campo, direcao) {
 
         const primeiro = direcao == 'crescente' ? a : b;
         const segundo = direcao == 'crescente' ? b : a;
-        if (campo == 'municipio') return primeiro[campo].localeCompare(segundo[campo]);
+        if (campo == 'municipio') { return primeiro[campo].localeCompare(segundo[campo]); }
+
+        // detecta campo de data pelo formato ISO (YYYY-MM-DD)
+        const isData = /^\d{4}-\d{2}-\d{2}$/.test(primeiro[campo]);
+        if (isData) { return new Date(primeiro[campo]) - new Date(segundo[campo]); }
+
         return Number(primeiro[campo]) - Number(segundo[campo]);
     });
     reordenarTabela();
